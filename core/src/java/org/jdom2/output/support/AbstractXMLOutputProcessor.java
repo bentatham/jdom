@@ -1,4 +1,4 @@
-/*-- 
+/*--
 
  Copyright (C) 2000-2007 Jason Hunter & Brett McLaughlin.
  All rights reserved.
@@ -11,8 +11,8 @@
     notice, this list of conditions, and the following disclaimer.
 
  2. Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions, and the disclaimer that follows 
-    these conditions in the documentation and/or other materials 
+    notice, this list of conditions, and the disclaimer that follows
+    these conditions in the documentation and/or other materials
     provided with the distribution.
 
  3. The name "JDOM" must not be used to endorse or promote products
@@ -23,12 +23,12 @@
     may "JDOM" appear in their name, without prior written permission
     from the JDOM Project Management <request_AT_jdom_DOT_org>.
 
- In addition, we request (but do not require) that you include in the 
- end-user documentation provided with the redistribution and/or in the 
+ In addition, we request (but do not require) that you include in the
+ end-user documentation provided with the redistribution and/or in the
  software itself an acknowledgement equivalent to the following:
      "This product includes software developed by the
       JDOM Project (http://www.jdom.org/)."
- Alternatively, the acknowledgment may be graphical using the logos 
+ Alternatively, the acknowledgment may be graphical using the logos
  available at http://www.jdom.org/images/logos.
 
  THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
@@ -44,8 +44,8 @@
  OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
- This software consists of voluntary contributions made by many 
- individuals on behalf of the JDOM Project and was originally 
+ This software consists of voluntary contributions made by many
+ individuals on behalf of the JDOM Project and was originally
  created by Jason Hunter <jhunter_AT_jdom_DOT_org> and
  Brett McLaughlin <brett_AT_jdom_DOT_org>.  For more information
  on the JDOM Project, please see <http://www.jdom.org/>.
@@ -181,7 +181,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.Document, org.jdom2.output.Format)
 	 */
@@ -194,7 +194,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.DocType, org.jdom2.output.Format)
 	 */
@@ -207,7 +207,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.Element, org.jdom2.output.Format)
 	 */
@@ -223,7 +223,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * java.util.List, org.jdom2.output.Format)
 	 */
@@ -231,7 +231,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	public void process(final Writer out, final Format format,
 			final List<? extends Content> list)
 			throws IOException {
-		FormatStack fstack = new FormatStack(format); 
+		FormatStack fstack = new FormatStack(format);
 		Walker walker = buildWalker(fstack, list, true);
 		printContent(out, fstack, new NamespaceStack(), walker);
 		out.flush();
@@ -239,7 +239,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.CDATA, org.jdom2.output.Format)
 	 */
@@ -248,7 +248,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 			final CDATA cdata) throws IOException {
 		// we use the powers of the Walker to manage text-like content.
 		final List<CDATA> list = Collections.singletonList(cdata);
-		FormatStack fstack = new FormatStack(format); 
+		FormatStack fstack = new FormatStack(format);
 		final Walker walker = buildWalker(fstack, list, true);
 		if (walker.hasNext()) {
 			printContent(out, fstack, new NamespaceStack(), walker);
@@ -258,7 +258,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.Text, org.jdom2.output.Format)
 	 */
@@ -267,7 +267,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 			final Text text) throws IOException {
 		// we use the powers of the Walker to manage text-like content.
 		final List<Text> list = Collections.singletonList(text);
-		FormatStack fstack = new FormatStack(format); 
+		FormatStack fstack = new FormatStack(format);
 		final Walker walker = buildWalker(fstack, list, true);
 		if (walker.hasNext()) {
 			printContent(out, fstack, new NamespaceStack(), walker);
@@ -277,7 +277,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.Comment, org.jdom2.output.Format)
 	 */
@@ -290,7 +290,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.ProcessingInstruction, org.jdom2.output.Format)
 	 */
@@ -306,7 +306,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.jdom2.output.XMLOutputProcessor#process(java.io.Writer,
 	 * org.jdom2.EntityRef, org.jdom2.output.Format)
 	 */
@@ -327,7 +327,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	/**
 	 * Print some string value to the output. Null values are ignored. This
 	 * ignore-null property is used for a few tricks.
-	 * 
+	 *
 	 * @param out
 	 *        The Writer to write to.
 	 * @param str
@@ -344,7 +344,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * Write a single character to the output Writer.
-	 * 
+	 *
 	 * @param out
 	 *        The Writer to write to.
 	 * @param c
@@ -377,7 +377,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	 * <p>
 	 * <b>Note:</b> If {@link FormatStack#getEscapeOutput()} is false then no
 	 * escaping will happen.
-	 * 
+	 *
 	 * @param out
 	 *        The destination Writer
 	 * @param fstack
@@ -407,7 +407,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	 * {@link #write(Writer, String)}. This could be useful for subclasses to
 	 * hook in to. All text-type output will come through this or the
 	 * {@link #textRaw(Writer, char)} method.
-	 * 
+	 *
 	 * @param out
 	 *        the destination writer.
 	 * @param str
@@ -424,7 +424,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	 * {@link #write(Writer, char)}. This could be useful for subclasses to hook
 	 * in to. All text-type output will come through this or the
 	 * {@link #textRaw(Writer, String)} method.
-	 * 
+	 *
 	 * @param out
 	 *        the destination Writer.
 	 * @param ch
@@ -438,7 +438,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * Write an {@link EntityRef} to the destination.
-	 * 
+	 *
 	 * @param out
 	 *        the destination Writer.
 	 * @param name
@@ -474,7 +474,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of a {@link Document}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -493,7 +493,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 		// If there is no root element then we cannot use the normal ways to
 		// access the ContentList because Document throws an exception.
 		// so we hack it and just access it by index.
-		List<Content> list = doc.hasRootElement() ? doc.getContent() : 
+		List<Content> list = doc.hasRootElement() ? doc.getContent() :
 			new ArrayList<Content>(doc.getContentSize());
 		if (list.isEmpty()) {
 			final int sz = doc.getContentSize();
@@ -514,7 +514,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 				if (c == null) {
 					// but, what we do is ensure it is all whitespace, and not CDATA
 					final String padding = walker.text();
-					if (padding != null && Verifier.isAllXMLWhitespace(padding) && 
+					if (padding != null && Verifier.isAllXMLWhitespace(padding) &&
 							!walker.isCDATA()) {
 						// we do not use the escaping or text* method because this
 						// content is outside of the root element, and thus is not
@@ -533,7 +533,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 							printElement(out, fstack, nstack, (Element)c);
 							break;
 						case ProcessingInstruction :
-							printProcessingInstruction(out, fstack, 
+							printProcessingInstruction(out, fstack,
 									(ProcessingInstruction)c);
 							break;
 						case Text :
@@ -561,7 +561,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	/**
 	 * This will handle printing of the XML declaration. Assumes XML version 1.0
 	 * since we don't directly know.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -597,7 +597,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of a {@link DocType}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -646,7 +646,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of a {@link ProcessingInstruction}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -695,7 +695,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of a {@link Comment}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -714,7 +714,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of an {@link EntityRef}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -732,7 +732,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of a {@link CDATA}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -750,7 +750,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of a {@link Text}.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -776,7 +776,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	 * <p>
 	 * This method arranges for outputting the Element infrastructure including
 	 * Namespace Declarations and Attributes.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -820,8 +820,11 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 					write(out, element.getQualifiedName());
 					write(out, ">");
 				}
+				else if (fstack.isSpaceBeforeCloseEmptyElement()) {
+                  write(out, " />");
+				}
 				else {
-					write(out, " />");
+					write(out, "/>");
 				}
 				// nothing more to do.
 				return;
@@ -904,7 +907,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	 * <li>do a newline if one is specified.
 	 * <li>loop back to 1. until there's no more content to process.
 	 * </ol>
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -949,7 +952,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 						printEntityRef(out, fstack, (EntityRef)c);
 						break;
 					case ProcessingInstruction:
-						printProcessingInstruction(out, fstack, 
+						printProcessingInstruction(out, fstack,
 								(ProcessingInstruction)c);
 						break;
 					case Text:
@@ -964,7 +967,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	/**
 	 * This will handle printing of any needed <code>{@link Namespace}</code>
 	 * declarations.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack
@@ -974,7 +977,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 	 * @throws IOException
 	 *         if the output fails
 	 */
-	protected void printNamespace(final Writer out, final FormatStack fstack, 
+	protected void printNamespace(final Writer out, final FormatStack fstack,
 			final Namespace ns)  throws IOException {
 		final String prefix = ns.getPrefix();
 		final String uri = ns.getURI();
@@ -991,7 +994,7 @@ public abstract class AbstractXMLOutputProcessor extends AbstractOutputProcessor
 
 	/**
 	 * This will handle printing of an <code>{@link Attribute}</code>.
-	 * 
+	 *
 	 * @param out
 	 *        <code>Writer</code> to use.
 	 * @param fstack

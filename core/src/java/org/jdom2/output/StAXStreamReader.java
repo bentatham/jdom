@@ -333,6 +333,9 @@ public final class StAXStreamReader implements Cloneable {
 		buffer.append("expandEmptyElements = ");
 		buffer.append(myFormat.expandEmptyElements);
 		buffer.append(", ");
+        buffer.append("spaceBeforeCloseEmptyElement = ");
+        buffer.append(myFormat.spaceBeforeCloseEmptyElement);       
+        buffer.append(", ");
 		buffer.append("lineSeparator = '");
 		for (char ch : myFormat.lineSeparator.toCharArray()) {
 			switch (ch) {

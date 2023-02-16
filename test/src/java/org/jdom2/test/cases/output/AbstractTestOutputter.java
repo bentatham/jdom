@@ -138,7 +138,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param doc
 	 *        <code>Document</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -152,7 +152,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param doctype
 	 *        <code>DocType</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -166,7 +166,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param element
 	 *        <code>Element</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -183,7 +183,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param list
 	 *        <code>List</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -199,7 +199,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param cdata
 	 *        <code>CDATA</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -213,7 +213,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param text
 	 *        <code>Text</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -227,7 +227,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param comment
 	 *        <code>Comment</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -241,7 +241,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param pi
 	 *        <code>ProcessingInstruction</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -255,7 +255,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param entity
 	 *        <code>EntityRef</code> to format.
 	 * @return the input content formatted as an XML String.
@@ -273,7 +273,7 @@ public abstract class AbstractTestOutputter {
 	 * <p>
 	 * <b>Warning</b>: a String is Unicode, which may not match the outputter's
 	 * specified encoding.
-	 * 
+	 *
 	 * @param element
 	 *        <code>Element</code> to output.
 	 * @return the input content formatted as an XML String.
@@ -315,43 +315,43 @@ public abstract class AbstractTestOutputter {
 	@Test
 	public void testTextWhitespace() {
 		Text content = new Text(" \r \n \t ");
-		assertEquals(expect(" \r \n \t "), 
+		assertEquals(expect(" \r \n \t "),
 				outputTextAsString(fraw,     content));
-        assertEquals(expect(" \r \n \t "), 
+        assertEquals(expect(" \r \n \t "),
                 outputTextAsString(frawfp,   content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(fcompact, content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(fpretty,  content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(ftso,     content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(ftfw,     content));
 	}
 
 	@Test
 	public void testTextWithText() {
 		Text content = new Text(" \r & \n \t ");
-		assertEquals(expect(" \r &amp; \n \t "), 
+		assertEquals(expect(" \r &amp; \n \t "),
 				outputTextAsString(fraw,     content));
-        assertEquals(expect(" \r &amp; \n \t "), 
+        assertEquals(expect(" \r &amp; \n \t "),
                 outputTextAsString(frawfp,   content));
-		assertEquals(expect("&amp;"), 
+		assertEquals(expect("&amp;"),
 				outputTextAsString(fcompact, content));
-		assertEquals(expect("&amp;"), 
+		assertEquals(expect("&amp;"),
 				outputTextAsString(fpretty,  content));
-		assertEquals(expect("&amp;"), 
+		assertEquals(expect("&amp;"),
 				outputTextAsString(ftso,     content));
-		assertEquals(expect(" \r &amp; \n \t "), 
+		assertEquals(expect(" \r &amp; \n \t "),
 				outputTextAsString(ftfw,     content));
 	}
 
 	@Test
 	public void testCDATAEmpty() {
 		CDATA content = new CDATA("");
-		assertEquals("<![CDATA[]]>", 
+		assertEquals("<![CDATA[]]>",
 				outputCDataAsString(fraw,     content));
-        assertEquals("<![CDATA[]]>", 
+        assertEquals("<![CDATA[]]>",
                 outputCDataAsString(frawfp,   content));
 		assertEquals("",
 				outputCDataAsString(fcompact, content));
@@ -366,101 +366,101 @@ public abstract class AbstractTestOutputter {
 	@Test
 	public void testCDATAWhitespace() {
 		CDATA content = new CDATA(" \r \n \t ");
-		assertEquals("<![CDATA[ \r \n \t ]]>", 
+		assertEquals("<![CDATA[ \r \n \t ]]>",
 				outputCDataAsString(fraw,     content));
-        assertEquals("<![CDATA[ \r \n \t ]]>", 
+        assertEquals("<![CDATA[ \r \n \t ]]>",
                 outputCDataAsString(frawfp,   content));
-		assertEquals("", 
+		assertEquals("",
 				outputCDataAsString(fcompact, content));
-		assertEquals("", 
+		assertEquals("",
 				outputCDataAsString(fpretty,  content));
-		assertEquals("", 
+		assertEquals("",
 				outputCDataAsString(ftso,      content));
-		assertEquals("", 
+		assertEquals("",
 				outputCDataAsString(ftfw,     content));
 	}
 
 	@Test
 	public void testCDATAWithText() {
 		CDATA content = new CDATA(" \r & \n \t ");
-		assertEquals("<![CDATA[ \r & \n \t ]]>", 
+		assertEquals("<![CDATA[ \r & \n \t ]]>",
 				outputCDataAsString(fraw,     content));
-        assertEquals("<![CDATA[ \r & \n \t ]]>", 
+        assertEquals("<![CDATA[ \r & \n \t ]]>",
                 outputCDataAsString(frawfp,   content));
-		assertEquals("<![CDATA[&]]>", 
+		assertEquals("<![CDATA[&]]>",
 				outputCDataAsString(fcompact, content));
-		assertEquals("<![CDATA[&]]>", 
+		assertEquals("<![CDATA[&]]>",
 				outputCDataAsString(fpretty,  content));
-		assertEquals("<![CDATA[&]]>", 
+		assertEquals("<![CDATA[&]]>",
 				outputCDataAsString(ftso,  content));
-		assertEquals("<![CDATA[ \r & \n \t ]]>", 
+		assertEquals("<![CDATA[ \r & \n \t ]]>",
 				outputCDataAsString(ftfw,     content));
 	}
 
 	@Test
 	public void testEntityRef() {
 		EntityRef content = new EntityRef("ref");
-		assertEquals("&ref;", 
+		assertEquals("&ref;",
 				outputEntityRefAsString(fraw,     content));
-        assertEquals("&ref;", 
+        assertEquals("&ref;",
                 outputEntityRefAsString(frawfp,   content));
-		assertEquals("&ref;", 
+		assertEquals("&ref;",
 				outputEntityRefAsString(fcompact, content));
-		assertEquals("&ref;", 
+		assertEquals("&ref;",
 				outputEntityRefAsString(fpretty,  content));
-		assertEquals("&ref;", 
+		assertEquals("&ref;",
 				outputEntityRefAsString(ftso,  content));
-		assertEquals("&ref;", 
+		assertEquals("&ref;",
 				outputEntityRefAsString(ftfw,     content));
 	}
 	
 	@Test
 	public void testProcessingInstructionTargetOnly() {
 		ProcessingInstruction content = new ProcessingInstruction("target");
-		assertEquals(expect("<?target?>"), 
+		assertEquals(expect("<?target?>"),
 				outputPIAsString(fraw,     content));
-        assertEquals(expect("<?target?>"), 
+        assertEquals(expect("<?target?>"),
                 outputPIAsString(frawfp,   content));
-		assertEquals(expect("<?target?>"), 
+		assertEquals(expect("<?target?>"),
 				outputPIAsString(fcompact, content));
-		assertEquals(expect("<?target?>"), 
+		assertEquals(expect("<?target?>"),
 				outputPIAsString(fpretty,  content));
-		assertEquals(expect("<?target?>"), 
+		assertEquals(expect("<?target?>"),
 				outputPIAsString(ftfw,     content));
 	}
 	
 	@Test
 	public void testProcessingInstructionTargetWithData() {
-		ProcessingInstruction content = 
+		ProcessingInstruction content =
 				new ProcessingInstruction("target", "data");
-		assertEquals("<?target data?>", 
+		assertEquals("<?target data?>",
 				outputPIAsString(fraw,     content));
-        assertEquals("<?target data?>", 
+        assertEquals("<?target data?>",
                 outputPIAsString(frawfp,   content));
-		assertEquals("<?target data?>", 
+		assertEquals("<?target data?>",
 				outputPIAsString(fcompact, content));
-		assertEquals("<?target data?>", 
+		assertEquals("<?target data?>",
 				outputPIAsString(fpretty,  content));
-		assertEquals("<?target data?>", 
+		assertEquals("<?target data?>",
 				outputPIAsString(ftso,  content));
-		assertEquals("<?target data?>", 
+		assertEquals("<?target data?>",
 				outputPIAsString(ftfw,     content));
 	}
 	
 	@Test
 	public void testComment() {
 		Comment content = new Comment("comment");
-		assertEquals("<!--comment-->", 
+		assertEquals("<!--comment-->",
 				outputCommentAsString(fraw,     content));
-        assertEquals("<!--comment-->", 
+        assertEquals("<!--comment-->",
                 outputCommentAsString(frawfp,   content));
-		assertEquals("<!--comment-->", 
+		assertEquals("<!--comment-->",
 				outputCommentAsString(fcompact, content));
-		assertEquals("<!--comment-->", 
+		assertEquals("<!--comment-->",
 				outputCommentAsString(fpretty,  content));
-		assertEquals("<!--comment-->", 
+		assertEquals("<!--comment-->",
 				outputCommentAsString(ftso,  content));
-		assertEquals("<!--comment-->", 
+		assertEquals("<!--comment-->",
 				outputCommentAsString(ftfw,     content));
 	}
 	
@@ -468,17 +468,17 @@ public abstract class AbstractTestOutputter {
 	@Test
 	public void testDocTypeSimple() {
 		DocType content = new DocType("root");
-		assertEquals("<!DOCTYPE root>", 
+		assertEquals("<!DOCTYPE root>",
 				outputDocTypeAsString(fraw,     content));
-        assertEquals("<!DOCTYPE root>", 
+        assertEquals("<!DOCTYPE root>",
                 outputDocTypeAsString(frawfp,   content));
-		assertEquals("<!DOCTYPE root>", 
+		assertEquals("<!DOCTYPE root>",
 				outputDocTypeAsString(fcompact, content));
-		assertEquals("<!DOCTYPE root>", 
+		assertEquals("<!DOCTYPE root>",
 				outputDocTypeAsString(fpretty,  content));
-		assertEquals("<!DOCTYPE root>", 
+		assertEquals("<!DOCTYPE root>",
 				outputDocTypeAsString(ftso,  content));
-		assertEquals("<!DOCTYPE root>", 
+		assertEquals("<!DOCTYPE root>",
 				outputDocTypeAsString(ftfw,     content));
 	}
 	
@@ -486,34 +486,34 @@ public abstract class AbstractTestOutputter {
 	public void testDocTypeSimpleISS() {
 		DocType content = new DocType("root");
 		content.setInternalSubset("<!ENTITY name \"value\">");
-		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>", 
+		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>",
 				outputDocTypeAsString(fraw,     content));
-        assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>", 
+        assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>",
                 outputDocTypeAsString(frawfp,   content));
-		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>", 
+		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>",
 				outputDocTypeAsString(fcompact, content));
-		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>", 
+		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>",
 				outputDocTypeAsString(fpretty,  content));
-		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>", 
+		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>",
 				outputDocTypeAsString(ftso,  content));
-		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>", 
+		assertEquals("<!DOCTYPE root [\n<!ENTITY name \"value\">]>",
 				outputDocTypeAsString(ftfw,     content));
 	}
 	
 	@Test
 	public void testDocTypeSystemID() {
 		DocType content = new DocType("root", "sysid");
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">",
 				outputDocTypeAsString(fraw,     content));
-        assertEquals("<!DOCTYPE root SYSTEM \"sysid\">", 
+        assertEquals("<!DOCTYPE root SYSTEM \"sysid\">",
                 outputDocTypeAsString(frawfp,   content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">",
 				outputDocTypeAsString(fcompact, content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">",
 				outputDocTypeAsString(fpretty,  content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">",
 				outputDocTypeAsString(ftso,  content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\">",
 				outputDocTypeAsString(ftfw,     content));
 	}
 	
@@ -521,34 +521,34 @@ public abstract class AbstractTestOutputter {
 	public void testDocTypeSystemIDISS() {
 		DocType content = new DocType("root", "sysid");
 		content.setInternalSubset("internal");
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(fraw,     content));
-        assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>", 
+        assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>",
                 outputDocTypeAsString(frawfp,   content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(fcompact, content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(fpretty,  content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(ftso,  content));
-		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root SYSTEM \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(ftfw,     content));
 	}
 	
 	@Test
 	public void testDocTypePublicSystemID() {
 		DocType content = new DocType("root", "pubid", "sysid");
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">",
 				outputDocTypeAsString(fraw,     content));
-        assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">", 
+        assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">",
                 outputDocTypeAsString(frawfp,   content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">",
 				outputDocTypeAsString(fcompact, content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">",
 				outputDocTypeAsString(fpretty,  content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">",
 				outputDocTypeAsString(ftso,  content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\">",
 				outputDocTypeAsString(ftfw,     content));
 	}
 	
@@ -556,17 +556,17 @@ public abstract class AbstractTestOutputter {
 	public void testDocTypePublicSystemIDISS() {
 		DocType content = new DocType("root", "pubid", "sysid");
 		content.setInternalSubset("internal");
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(fraw,     content));
-        assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>", 
+        assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>",
                 outputDocTypeAsString(frawfp,     content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(fcompact, content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(fpretty,  content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(ftso,  content));
-		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>", 
+		assertEquals("<!DOCTYPE root PUBLIC \"pubid\" \"sysid\" [\ninternal]>",
 				outputDocTypeAsString(ftfw,     content));
 	}
 	
@@ -581,17 +581,17 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text("  \n \n "));
 		root.addContent(new Text("  \t "));
 		root.addContent(new Text("  "));
-		assertEquals(expect("<root><![CDATA[ ]]>        \n \n   \t   </root>"), 
+		assertEquals(expect("<root><![CDATA[ ]]>        \n \n   \t   </root>"),
 				outputElementAsString(fraw,     root));
-        assertEquals(expect("<root><![CDATA[ ]]>        \n \n   \t   </root>"), 
+        assertEquals(expect("<root><![CDATA[ ]]>        \n \n   \t   </root>"),
                 outputElementAsString(frawfp,   root));
-		assertEquals(expect("<root/>"), 
+		assertEquals(expect("<root/>"),
 				outputElementAsString(fcompact, root));
-		assertEquals(expect("<root/>"), 
+		assertEquals(expect("<root/>"),
 				outputElementAsString(fpretty,  root));
-		assertEquals(expect("<root/>"), 
+		assertEquals(expect("<root/>"),
 				outputElementAsString(ftso,  root));
-		assertEquals(expect("<root/>"), 
+		assertEquals(expect("<root/>"),
 				outputElementAsString(ftfw,     root));
 	}
 	
@@ -606,32 +606,32 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text("  \n \n "));
 		root.addContent(new Text("  \t "));
 		root.addContent(new Text("  "));
-		assertEquals(expect("<root><![CDATA[ ]]>     X  \n \n   \t   </root>"), 
+		assertEquals(expect("<root><![CDATA[ ]]>     X  \n \n   \t   </root>"),
 				outputElementAsString(fraw,     root));
-        assertEquals(expect("<root><![CDATA[ ]]>     X  \n \n   \t   </root>"), 
+        assertEquals(expect("<root><![CDATA[ ]]>     X  \n \n   \t   </root>"),
                 outputElementAsString(frawfp,   root));
-		assertEquals(expect("<root>X</root>"), 
+		assertEquals(expect("<root>X</root>"),
 				outputElementAsString(fcompact, root));
-		assertEquals(expect("<root>X</root>"), 
+		assertEquals(expect("<root>X</root>"),
 				outputElementAsString(fpretty,  root));
-		assertEquals(expect("<root>X</root>"), 
+		assertEquals(expect("<root>X</root>"),
 				outputElementAsString(ftso,  root));
-		assertEquals(expect("<root><![CDATA[ ]]>     X  \n \n   \t   </root>"), 
+		assertEquals(expect("<root><![CDATA[ ]]>     X  \n \n   \t   </root>"),
 				outputElementAsString(ftfw,     root));
 	}
 	
 	@Test
 	public void testDocumentSimple() {
 		Document content = new Document();
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
 				outputDocumentAsString(fraw,     content));
-        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", 
+        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
                 outputDocumentAsString(frawfp,   content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
 				outputDocumentAsString(fcompact, content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
 				outputDocumentAsString(fpretty,  content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
 				outputDocumentAsString(ftso,  content));
 		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n",
 				outputDocumentAsString(ftfw,     content));
@@ -641,15 +641,15 @@ public abstract class AbstractTestOutputter {
 	public void testDocumentDocType() {
 		Document content = new Document();
 		content.setDocType(new DocType("root"));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n",
 				outputDocumentAsString(fraw,     content));
-        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n", 
+        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n",
                 outputDocumentAsString(frawfp,   content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n",
 				outputDocumentAsString(fcompact, content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n",
 				outputDocumentAsString(fpretty,  content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n",
 				outputDocumentAsString(ftso,  content));
 		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE root>\n",
 				outputDocumentAsString(ftfw,     content));
@@ -659,15 +659,15 @@ public abstract class AbstractTestOutputter {
 	public void testDocumentComment() {
 		Document content = new Document();
 		content.addContent(new Comment("comment"));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n",
 				outputDocumentAsString(fraw,     content));
-        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n", 
+        assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n",
                 outputDocumentAsString(frawfp,   content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n",
 				outputDocumentAsString(fcompact, content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n",
 				outputDocumentAsString(fpretty,  content));
-		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n", 
+		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n",
 				outputDocumentAsString(ftso,  content));
 		assertEquals("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!--comment-->\n",
 				outputDocumentAsString(ftfw,     content));
@@ -685,15 +685,15 @@ public abstract class AbstractTestOutputter {
 	@Test
 	public void testXXX() {
 		Text content = new Text("");
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(fraw,     content));
-        assertEquals("", 
+        assertEquals("",
                 outputTextAsString(frawfp,     content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(fcompact, content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(fpretty,  content));
-		assertEquals("", 
+		assertEquals("",
 				outputTextAsString(ftfw,     content));
 	}
 	
@@ -851,7 +851,7 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text("vv"));
 		root.addContent(new Text("  "));
 		checkOutput(root,
-				"<root><![CDATA[ ]]> xx yy    zz  ww&amp;vv  </root>", 
+				"<root><![CDATA[ ]]> xx yy    zz  ww&amp;vv  </root>",
 				"<root>xx yy zz ww&amp;vv</root>",
 				"<root>xx yy    zz  ww&amp;vv</root>",
 				"<root>xx yy    zz  ww&amp;vv</root>",
@@ -876,7 +876,7 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text("  \t "));
 		root.addContent(new Text("  "));
 		checkOutput(root,
-				"<root><![CDATA[ ]]>        \n \n   \t   </root>", 
+				"<root><![CDATA[ ]]>        \n \n   \t   </root>",
 				"<root />",
 				"<root />",
 				"<root />",
@@ -900,8 +900,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><![CDATA[ ]]>        \n \n   \t   </root>", 
+		checkOutput(root, fs,
+				"<root><![CDATA[ ]]>        \n \n   \t   </root>",
 				"<root></root>",
 				"<root></root>",
 				"<root></root>",
@@ -928,8 +928,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><![CDATA[ ]]>        \n \n <!--Boo-->  \t   </root>", 
+		checkOutput(root, fs,
+				"<root><![CDATA[ ]]>        \n \n <!--Boo-->  \t   </root>",
 				"<root><!--Boo--></root>",
 				"<root>\n  <!--Boo-->\n</root>",
 				"<root>\n  <!--Boo-->\n</root>",
@@ -950,8 +950,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><!--Boo--> <![CDATA[A]]></root>", 
+		checkOutput(root, fs,
+				"<root><!--Boo--> <![CDATA[A]]></root>",
 				"<root><!--Boo--><![CDATA[A]]></root>",
 				"<root>\n  <!--Boo-->\n  <![CDATA[A]]>\n</root>",
 				"<root>\n  <!--Boo-->\n  <![CDATA[A]]>\n</root>",
@@ -972,8 +972,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><!--Boo--> &aer;</root>", 
+		checkOutput(root, fs,
+				"<root><!--Boo--> &aer;</root>",
 				"<root><!--Boo-->&aer;</root>",
 				"<root>\n  <!--Boo-->\n  &aer;\n</root>",
 				"<root>\n  <!--Boo-->\n  &aer;\n</root>",
@@ -994,8 +994,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><!--Boo--> txt</root>", 
+		checkOutput(root, fs,
+				"<root><!--Boo--> txt</root>",
 				"<root><!--Boo-->txt</root>",
 				"<root>\n  <!--Boo-->\n  txt\n</root>",
 				"<root>\n  <!--Boo-->\n  txt\n</root>",
@@ -1019,8 +1019,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><!--Boo--> txt</root>", 
+		checkOutput(root, fs,
+				"<root><!--Boo--> txt</root>",
 				"<root><!--Boo-->txt</root>",
 				"<root>\n  <!--Boo-->\n  txt\n</root>",
 				"<root>\n  <!--Boo-->\n  txt\n</root>",
@@ -1040,9 +1040,9 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text(" "));
 		root.addContent(new ProcessingInstruction("pitarget"));
 		root.addContent(new Text(" "));
-		checkOutput(root,  
-				"<root> <!--Boo--> <child /> <?pitarget?> </root>", 
-				"<root><!--Boo--><child /><?pitarget?></root>", 
+		checkOutput(root,
+				"<root> <!--Boo--> <child /> <?pitarget?> </root>",
+				"<root><!--Boo--><child /><?pitarget?></root>",
 				"<root>\n  <!--Boo-->\n  <child />\n  <?pitarget?>\n</root>",
 				"<root>\n  <!--Boo-->\n  <child />\n  <?pitarget?>\n</root>",
 				"<root>\n  <!--Boo-->\n  <child />\n  <?pitarget?>\n</root>");
@@ -1056,7 +1056,7 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text("    "));
 		root.addContent(new EntityRef("err"));
 		checkOutput(root,
-				"<root>&erl;     &err;</root>", 
+				"<root>&erl;     &err;</root>",
 				"<root>&erl; &err;</root>",
 				"<root>&erl;     &err;</root>",
 				"<root>&erl;     &err;</root>",
@@ -1070,7 +1070,7 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text(" mid "));
 		root.addContent(new Text(" tr "));
 		checkOutput(root,
-				"<root> tl  mid  tr </root>", 
+				"<root> tl  mid  tr </root>",
 				"<root>tl mid tr</root>",
 				"<root>tl  mid  tr</root>",
 				"<root>tl  mid  tr</root>",
@@ -1084,7 +1084,7 @@ public abstract class AbstractTestOutputter {
 		root.addContent(new Text(" mid "));
 		root.addContent(new CDATA(" tr "));
 		checkOutput(root,
-				"<root><![CDATA[ tl ]]> mid <![CDATA[ tr ]]></root>", 
+				"<root><![CDATA[ tl ]]> mid <![CDATA[ tr ]]></root>",
 				"<root><![CDATA[tl]]> mid <![CDATA[tr]]></root>",
 				"<root><![CDATA[tl ]]> mid <![CDATA[ tr]]></root>",
 				"<root><![CDATA[tl ]]> mid <![CDATA[ tr]]></root>",
@@ -1106,7 +1106,7 @@ public abstract class AbstractTestOutputter {
 
 	@Test
 	public void testOutputDocTypeSimple() {
-		checkOutput(new DocType("root"), "<!DOCTYPE root>", "<!DOCTYPE root>", "<!DOCTYPE root>", 
+		checkOutput(new DocType("root"), "<!DOCTYPE root>", "<!DOCTYPE root>", "<!DOCTYPE root>",
 				"<!DOCTYPE root>", "<!DOCTYPE root>");
 	}
 
@@ -1142,8 +1142,8 @@ public abstract class AbstractTestOutputter {
 		doc.addContent(new Element("root"));
 		String xmldec = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 		String rtdec = "<root />";
-		checkOutput(doc, 
-				xmldec + "\n" + rtdec + "\n", 
+		checkOutput(doc,
+				xmldec + "\n" + rtdec + "\n",
 				xmldec + "\n" + rtdec + "\n",
 				xmldec + "\n" + rtdec + "\n",
 				xmldec + "\n" + rtdec + "\n",
@@ -1163,7 +1163,7 @@ public abstract class AbstractTestOutputter {
 		};
 		String rtdec = "<root />";
 		checkOutput(doc, setup,
-				xmldec + "\n" + rtdec + "\n", 
+				xmldec + "\n" + rtdec + "\n",
 				xmldec + "\n" + rtdec + "\n",
 				xmldec + "\n" + rtdec + "\n",
 				xmldec + "\n" + rtdec + "\n",
@@ -1182,7 +1182,7 @@ public abstract class AbstractTestOutputter {
 		};
 		String rtdec = "<root />";
 		checkOutput(doc, setup,
-				rtdec + "\n", 
+				rtdec + "\n",
 				rtdec + "\n",
 				rtdec + "\n",
 				rtdec + "\n",
@@ -1207,8 +1207,8 @@ public abstract class AbstractTestOutputter {
 		String rtdec = "<root />";
 		String lf = "\n";
 		String dlf = usesrawxmlout ? "" : lf;
-		checkOutput(doc, 
-				xmldec + lf + dtdec + commentdec + pidec + rtdec + lf, 
+		checkOutput(doc,
+				xmldec + lf + dtdec + commentdec + pidec + rtdec + lf,
 				xmldec + lf + dtdec + commentdec + pidec + rtdec + lf,
 				xmldec + lf + dtdec + dlf + commentdec + dlf + pidec  + dlf + rtdec + lf,
 				xmldec + lf + dtdec + dlf + commentdec + dlf + pidec  + dlf + rtdec + lf,
@@ -1277,7 +1277,7 @@ public abstract class AbstractTestOutputter {
 		pretty.append("</root>");
 		pretty.append(lf);
 		
-		checkOutput(doc, raw.toString(), raw.toString(), pretty.toString(), pretty.toString(), pretty.toString()); 
+		checkOutput(doc, raw.toString(), raw.toString(), pretty.toString(), pretty.toString(), pretty.toString());
 	}
 	
 	@Test
@@ -1310,8 +1310,8 @@ public abstract class AbstractTestOutputter {
 				fmt.setExpandEmptyElements(true);
 			}
 		};
-		checkOutput(root, fs,  
-				"<root><!--Boo--> xx &lt;emb&gt; xx </root>", 
+		checkOutput(root, fs,
+				"<root><!--Boo--> xx &lt;emb&gt; xx </root>",
 				"<root><!--Boo-->xx &lt;emb&gt; xx</root>",
 				"<root>\n  <!--Boo-->\n  xx &lt;emb&gt; xx\n</root>",
 				"<root>\n  <!--Boo-->\n  xx &lt;emb&gt; xx\n</root>",
@@ -1339,7 +1339,7 @@ public abstract class AbstractTestOutputter {
 			}
 		};
 		final String expect = sb.toString();
-		checkOutput(root, fs, expect, expect, expect, expect, expect); 
+		checkOutput(root, fs, expect, expect, expect, expect, expect);
 	}
 
 	
@@ -1365,46 +1365,46 @@ public abstract class AbstractTestOutputter {
         public AbstractRunner(Class<?> claxx) {
             this.clazz = claxx;
         }
-        
+
         @Override
         public boolean matches(Class<?> claxx) {
             return this.clazz.isAssignableFrom(claxx);
         }
-	    
+	
 	}
 
     OutputRunner ECRUNNER = new AbstractRunner(Element.class) {
-        
+
         @Override
         public String outputString(AbstractTestOutputter tester, Format format,
                 Object data) {
             return tester.outputElementContentString(format, (Element)data);
         }
     };
-    
+
 
 	private static final OutputRunner[] RUNNERS = {
-	    
+	
 	    new AbstractRunner(Document.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
                 return tester.outputDocumentAsString(format, (Document)data);
             }
         },
-        
+
         new AbstractRunner(Element.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
                 return tester.outputElementAsString(format, (Element)data);
             }
         },
-        
+
         new AbstractRunner(EntityRef.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
@@ -1412,7 +1412,7 @@ public abstract class AbstractTestOutputter {
             }
         },
         new AbstractRunner(CDATA.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
@@ -1420,7 +1420,7 @@ public abstract class AbstractTestOutputter {
             }
         },
         new AbstractRunner(Comment.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
@@ -1428,7 +1428,7 @@ public abstract class AbstractTestOutputter {
             }
         },
         new AbstractRunner(DocType.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
@@ -1436,7 +1436,7 @@ public abstract class AbstractTestOutputter {
             }
         },
         new AbstractRunner(ProcessingInstruction.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
@@ -1444,7 +1444,7 @@ public abstract class AbstractTestOutputter {
             }
         },
         new AbstractRunner(Text.class) {
-            
+
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
                     Object data) {
@@ -1452,7 +1452,7 @@ public abstract class AbstractTestOutputter {
             }
         },
         new AbstractRunner(List.class) {
-            
+
             @SuppressWarnings("unchecked")
             @Override
             public String outputString(AbstractTestOutputter tester, Format format,
@@ -1467,11 +1467,11 @@ public abstract class AbstractTestOutputter {
 	 * formatters, raw, compact, and pretty. It will also run each of those
 	 * formatters as the outputString(content), output(content, OutputStream)
 	 * and output(content, Writer).
-	 * 
+	 *
 	 * The expectation is that the results of the three output forms (String,
 	 * OutputStream, and Writer) will be identical, and that it will match
 	 * the expected value for the appropriate formatter.
-	 * 
+	 *
 	 * @param content The content to output
 	 * @param methodprefix What the methods are called
 	 * @param clazz The class used as the parameter for the methods.
@@ -1481,7 +1481,7 @@ public abstract class AbstractTestOutputter {
 	 * @param pretty What we expect the content to look like with the PRETTY format
 	 * @param trimfw What we expect the content to look like with the TRIM_FULL_WHITE format
 	 */
-	protected void checkOutput(Object content, String methodprefix, Class<?> clazz, 
+	protected void checkOutput(Object content, String methodprefix, Class<?> clazz,
 			FormatSetup setup, String raw, String compact, String pretty, String tso, String trimfw) {
 		OutputRunner meth = getMyMethod(methodprefix, clazz);
 		
@@ -1492,8 +1492,8 @@ public abstract class AbstractTestOutputter {
 		Format fattspec = Format.getPrettyFormat();
 		fattspec.setSpecifiedAttributesOnly(true);
 		Format[] formats = new Format[] {
-				getFormat(setup, Format.getRawFormat()), 
-                getFormat(setup, Format.getPrettyFormat().setTextMode(TextMode.PRESERVE)), 
+				getFormat(setup, Format.getRawFormat()),
+                getFormat(setup, Format.getPrettyFormat().setTextMode(TextMode.PRESERVE)),
 				getFormat(setup, Format.getCompactFormat()),
 				getFormat(setup, Format.getPrettyFormat()),
 				getFormat(setup, fattspec),

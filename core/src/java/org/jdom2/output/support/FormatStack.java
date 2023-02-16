@@ -1,4 +1,4 @@
-/*-- 
+/*--
 
  Copyright (C) 2000-2007 Jason Hunter & Brett McLaughlin.
  All rights reserved.
@@ -11,8 +11,8 @@
     notice, this list of conditions, and the following disclaimer.
 
  2. Redistributions in binary form must reproduce the above copyright
-    notice, this list of conditions, and the disclaimer that follows 
-    these conditions in the documentation and/or other materials 
+    notice, this list of conditions, and the disclaimer that follows
+    these conditions in the documentation and/or other materials
     provided with the distribution.
 
  3. The name "JDOM" must not be used to endorse or promote products
@@ -23,12 +23,12 @@
     may "JDOM" appear in their name, without prior written permission
     from the JDOM Project Management <request_AT_jdom_DOT_org>.
 
- In addition, we request (but do not require) that you include in the 
- end-user documentation provided with the redistribution and/or in the 
+ In addition, we request (but do not require) that you include in the
+ end-user documentation provided with the redistribution and/or in the
  software itself an acknowledgement equivalent to the following:
      "This product includes software developed by the
       JDOM Project (http://www.jdom.org/)."
- Alternatively, the acknowledgment may be graphical using the logos 
+ Alternatively, the acknowledgment may be graphical using the logos
  available at http://www.jdom.org/images/logos.
 
  THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED
@@ -44,8 +44,8 @@
  OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
  SUCH DAMAGE.
 
- This software consists of voluntary contributions made by many 
- individuals on behalf of the JDOM Project and was originally 
+ This software consists of voluntary contributions made by many
+ individuals on behalf of the JDOM Project and was originally
  created by Jason Hunter <jhunter_AT_jdom_DOT_org> and
  Brett McLaughlin <brett_AT_jdom_DOT_org>.  For more information
  on the JDOM Project, please see <http://www.jdom.org/>.
@@ -70,9 +70,9 @@ import org.jdom2.output.Format.TextMode;
  * <p>
  * The value this class adds is:
  * <ul>
- * <li>Fast - 
+ * <li>Fast -
  * </ul>
- * 
+ *
  * @since JDOM2
  * @author Rolf Lear
  */
@@ -115,6 +115,12 @@ public final class FormatStack {
 	 * &lt;tagName&gt;&lt;/tagName&gt; - default is <code>false</code>
 	 */
 	private final boolean expandEmptyElements;
+
+	/**
+     * Whether or not to include an empty space in an close element, when expandEmptyElements is false
+     * &lt;tagName /&gt; - default is <code>true</code>
+     */
+	private final boolean spaceBeforeCloseEmptyElement;
 	
 	/**
 	 * Whether or not to output 'specified' Attributes only
@@ -157,7 +163,7 @@ public final class FormatStack {
 
 	/**
 	 * Creates a new FormatStack seeded with the specified Format
-	 * 
+	 *
 	 * @param format
 	 *        the Format instance to seed the stack with.
 	 */
@@ -169,6 +175,7 @@ public final class FormatStack {
 		omitDeclaration = format.getOmitDeclaration();
 		omitEncoding = format.getOmitEncoding();
 		expandEmptyElements = format.getExpandEmptyElements();
+		spaceBeforeCloseEmptyElement = format.getSpaceBeforeCloseEmptyElement();
 		escapeStrategy = format.getEscapeStrategy();
 		defaultMode = format.getTextMode();
 		specifiedAttributesOnly = format.isSpecifiedAttributesOnly();
@@ -176,7 +183,7 @@ public final class FormatStack {
         mode[depth] = format.getTextMode();
         if (mode[depth] == TextMode.PRESERVE) {
             // undo any special indenting and end-of-line management:
-            levelIndent[depth] = null;
+            levelIndent[depth] = null;^
             levelEOL[depth] = null;
             levelEOLIndent[depth] = null;
             termEOLIndent[depth] = null;
@@ -184,10 +191,10 @@ public final class FormatStack {
             levelIndent[depth] = format.getIndent() == null
                     ? null : "";
             levelEOL[depth] = format.getLineSeparator();
-            levelEOLIndent[depth] = levelIndent[depth] == null ?  
+            levelEOLIndent[depth] = levelIndent[depth] == null ?
                     null : levelEOL[depth];
             termEOLIndent[depth] = levelEOLIndent[depth];
-            
+   
         }
 		ignoreTrAXEscapingPIs[depth] = format.getIgnoreTrAXEscapingPIs();
 		escapeOutput[depth] = true;
@@ -260,6 +267,13 @@ public final class FormatStack {
 	}
 
 	/**
+    * @return the original {@link Format#getSpaceBeforeCloseEmptyElement()}
+    */
+    public boolean isSpaceBeforeCloseEmptyElement() {
+        return spaceBeforeCloseEmptyElement;
+    }
+	
+	/**
 	 * @return the original {@link Format#getEscapeStrategy()}
 	 */
 	public EscapeStrategy getEscapeStrategy() {
@@ -275,7 +289,7 @@ public final class FormatStack {
 
 	/**
 	 * Set the current depth's {@link Format#getIgnoreTrAXEscapingPIs()}
-	 * 
+	 *
 	 * @param ignoreTrAXEscapingPIs
 	 *        the boolean value to set.
 	 */
@@ -287,7 +301,7 @@ public final class FormatStack {
 	 * The escapeOutput flag can be set or unset. When set, Element text and
 	 * Attribute values are 'escaped' so that the output is valid XML. When
 	 * unset, the Element text and Attribute values are not escaped.
-	 * 
+	 *
 	 * @return the current depth's escapeOutput flag.
 	 */
 	public boolean getEscapeOutput() {
@@ -298,7 +312,7 @@ public final class FormatStack {
 	 * The escapeOutput flag can be set or unset. When set, Element text and
 	 * Attribute values are 'escaped' so that the output is valid XML. When
 	 * unset, the Element text and Attribute values are not escaped.
-	 * 
+	 *
 	 * @param escape
 	 *        what to set the current level's escapeOutput flag to.
 	 */
@@ -324,7 +338,7 @@ public final class FormatStack {
 	/**
 	 * Get the end-of-line indenting sequence for before the first item in an
 	 * Element, as well as between subsequent items (but not after the last item)
-	 * @return the String EOL sequence followed by an indent. Null if it should 
+	 * @return the String EOL sequence followed by an indent. Null if it should
 	 * be ignored
 	 */
 	public String getPadBetween() {
@@ -334,7 +348,7 @@ public final class FormatStack {
 	/**
 	 * Get the end-of-line indenting sequence for after the last item in an
 	 * Element
-	 * @return the String EOL sequence followed by an indent. Null if it should 
+	 * @return the String EOL sequence followed by an indent. Null if it should
 	 * be ignored
 	 */
 	public String getPadLast() {
@@ -343,13 +357,13 @@ public final class FormatStack {
 	
 	/**
 	 * Override the current depth's accumulated line indent.
-	 * 
+	 *
 	 * @param indent
 	 *        the indent to set.
 	 */
 	public void setLevelIndent(String indent) {
 		this.levelIndent[depth] = indent;
-		levelEOLIndent[depth] = (indent == null || levelEOL[depth] == null) ?  
+		levelEOLIndent[depth] = (indent == null || levelEOL[depth] == null) ?
 				null : (levelEOL[depth] + indent);
 		resetReusableIndents();
 	}
@@ -363,7 +377,7 @@ public final class FormatStack {
 
 	/**
 	 * Set the current depth's End-Of-Line sequence
-	 * 
+	 *
 	 * @param newline
 	 *        the new End-Of-Line sequence to set.
 	 */
@@ -381,7 +395,7 @@ public final class FormatStack {
 
 	/**
 	 * Change the current level's TextMode
-	 * 
+	 *
 	 * @param mode
 	 *        the new mode to set.
 	 */
@@ -415,7 +429,7 @@ public final class FormatStack {
 						sb.append(indent);
 						levelIndent[depth] = sb.toString();
 					} else {
-						termEOLIndent[depth] = lineSeparator; 
+						termEOLIndent[depth] = lineSeparator;
 						levelIndent[depth] = "";
 					}
 					levelEOLIndent[depth] = lineSeparator + levelIndent[depth];

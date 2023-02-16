@@ -83,8 +83,8 @@ import org.jdom2.Verifier;
  * is specified by this Format. The Format will by default use a sensible
  * EscapeStrategy that is based on the character encoding of the output. If
  * the default escape mechanism is not producing the correct results you can
- * change the EscapeStrategy on the format to suit your own needs.  
- * 
+ * change the EscapeStrategy on the format to suit your own needs.
+ *
  *
  * @see LineSeparator
  *
@@ -139,7 +139,7 @@ public class Format implements Cloneable {
 	/**
 	 * An EscapeStrategy suitable for 7-bit charsets
 	 */
-	private static final EscapeStrategy Bits7EscapeStrategy = 
+	private static final EscapeStrategy Bits7EscapeStrategy =
 			new EscapeStrategy7Bits();
 	
 	/**
@@ -235,7 +235,7 @@ public class Format implements Cloneable {
 	public static final String compact(String str) {
 		int right = str.length() - 1;
 		int left = 0;
-		while (left <= right && 
+		while (left <= right &&
 				Verifier.isXMLWhitespace(str.charAt(left))) {
 			left++;
 		}
@@ -336,7 +336,7 @@ public class Format implements Cloneable {
 	 * characters (e.g. characters that are not valid in the current encoding)
 	 * are converted to escaped representations.
 	 * <p>
-	 * @param strategy 
+	 * @param strategy
 	 *        The EscapeStrategy to query.
 	 * @param value
 	 *        <code>String</code> Attribute value to escape.
@@ -344,7 +344,7 @@ public class Format implements Cloneable {
 	 * @throws IllegalDataException
 	 *         if an entity can not be escaped
 	 */
-	public static final String escapeAttribute(final EscapeStrategy strategy, 
+	public static final String escapeAttribute(final EscapeStrategy strategy,
 			final String value) {
 		final int len = value.length();
 		int idx = 0;
@@ -441,7 +441,7 @@ public class Format implements Cloneable {
 	 * characters that are not valid in the current encoding) are converted to
 	 * escaped representations. If the eol parameter is not null, then any
 	 * internal newlines will be replaced with the specified eol sequence.
-	 * 
+	 *
 	 * @param strategy
 	 *        The EscapeStrategy
 	 * @param eol
@@ -599,6 +599,10 @@ public class Format implements Cloneable {
 	 * &lt;tagName&gt;&lt;/tagName&gt; - default is <code>false</code> */
 	boolean expandEmptyElements = false;
 
+	/** Whether or not to include a space in close empty element, when expandEmptyElements is false
+     * &lt;tagName /&gt; - default is <code>true</code> */
+	boolean	spaceBeforeCloseEmptyElement = true;
+
 	/** Whether TrAX output escaping disabling/enabling PIs are ignored
 	 * or processed - default is <code>false</code> */
 	boolean ignoreTrAXEscapingPIs = false;
@@ -680,7 +684,7 @@ public class Format implements Cloneable {
 	 * If the format's "indent" property is null (as is the default
 	 * for the Raw and Compact formats), then this value only effects the
 	 * newlines written after the declaration and doctype, as well as any
-	 * newlines embedded within existing text content. 
+	 * newlines embedded within existing text content.
 	 * </p>
 	 * Setting the indent to be null will disable end-of-line processing
 	 * for any formatting, but will not affect substitution of embedded \n.
@@ -706,7 +710,7 @@ public class Format implements Cloneable {
 	 * <pre>
 	 * Format.setLinewSeparator(LineSeparator.NONE);
 	 * </pre>
-	 * 
+	 *
 	 * @see #setLineSeparator(String) for comprehensive notes.
 	 *
 	 * @param separator {@link LineSeparator} line separator to us
@@ -714,8 +718,8 @@ public class Format implements Cloneable {
 	 * @since JDOM2
 	 */
 	public Format setLineSeparator(LineSeparator separator) {
-		return setLineSeparator(separator == null ? 
-				STANDARD_LINE_SEPARATOR : 
+		return setLineSeparator(separator == null ?
+				STANDARD_LINE_SEPARATOR :
 				separator.value());
 	}
 	
@@ -800,6 +804,27 @@ public class Format implements Cloneable {
 		return expandEmptyElements;
 	}
 
+    /**
+     * This will set whether to include a space before close empty element
+     * <code>&lt;tagName /&gt;</code>
+     *
+     * @param spaceBeforeCloseEmptyElement <code>boolean</code> indicating whether or not
+     *        to add space before close empty element
+     * @return a pointer to this Format for chaining
+     */
+    public Format setSpaceBeforeCloseEmptyElement(boolean spaceBeforeCloseEmptyElement) {
+        this.spaceBeforeCloseEmptyElement = spaceBeforeCloseEmptyElement;
+        return this;
+    }	
+	/**
+     * Returns whether to include space in empty close element, when expandEmptyElements is false.
+     *
+     * @return whether space before close empty element
+     */
+    public boolean getSpaceBeforeCloseEmptyElement() {
+        return spaceBeforeCloseEmptyElement;
+    }
+
 	/**
 	 * This will set whether JAXP TrAX processing instructions for
 	 * disabling/enabling output escaping are ignored.  Disabling
@@ -844,7 +869,7 @@ public class Format implements Cloneable {
 	/**
 	 * This sets the text output style.  Options are available as static
 	 * {@link TextMode} instances.  The default is {@link TextMode#PRESERVE}.
-	 * 
+	 *
 	 * @param mode The TextMode to set.
 	 * @return a pointer to this Format for chaining
 	 */
@@ -920,7 +945,7 @@ public class Format implements Cloneable {
 	}
 
 	/**
-	 * Set whether only those Attributes specified in the input XML should 
+	 * Set whether only those Attributes specified in the input XML should
 	 * be output. Other Attributes (those defaulted or 'fixed' in the DTD
 	 * or XMLSchema) should be ignored.
 	 * @param specifiedAttributesOnly true if the defaulted
@@ -1012,7 +1037,7 @@ public class Format implements Cloneable {
 	 * If a nested element contains another xml:space with the value "default"
 	 * formatting is turned back on  for the child element and then off for the
 	 * remainder of the parent element.
-	 * 
+	 *
 	 * @since JDOM2
 	 */
 	public static enum TextMode {

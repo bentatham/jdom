@@ -123,6 +123,16 @@ public class TestFormat {
 	}
 
 	@Test
+    public void testSpaceBeforeCloseEmptyElement() {
+        assertTrue(Format.getPrettyFormat().getSpaceBeforeCloseEmptyElement());
+        assertTrue(Format.getCompactFormat().getSpaceBeforeCloseEmptyElement());
+        Format mine = Format.getRawFormat();
+        assertTrue(mine.getSpaceBeforeCloseEmptyElement());
+        mine.setExpandEmptyElements(false);
+        assertFalse (mine.getSpaceBeforeCloseEmptyElement());
+    }
+	
+	@Test
 	public void testIgnoreTrAXEscapingPIs() {
 		assertFalse(Format.getPrettyFormat().getIgnoreTrAXEscapingPIs());
 		assertFalse(Format.getCompactFormat().getIgnoreTrAXEscapingPIs());
